@@ -5,13 +5,15 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "Dispositivo".
+ * This is the model class for table "dispositivo".
  *
  * @property int $idDispositivo
  * @property int $estado
  * @property string $dataCompra
  * @property string $tipo
  * @property string $referencia
+ *
+ * @property Avarias[] $avarias
  */
 class Dispositivos extends \yii\db\ActiveRecord
 {
@@ -20,7 +22,7 @@ class Dispositivos extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'Dispositivo';
+        return 'dispositivo';
     }
 
     /**
@@ -43,11 +45,21 @@ class Dispositivos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idDispositivo' => 'Id Dispositivo',
+            'idDispositivo' => 'Id Dispositivos',
             'estado' => 'Estado',
             'dataCompra' => 'Data Compra',
             'tipo' => 'Tipo',
             'referencia' => 'Referencia',
         ];
+    }
+
+    /**
+     * Gets query for [[Avarias]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAvarias()
+    {
+        return $this->hasMany(Avarias::className(), ['idDispositivo' => 'idDispositivo']);
     }
 }

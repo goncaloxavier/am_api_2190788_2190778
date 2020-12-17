@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "Peca".
+ * This is the model class for table "Pecas".
  *
  * @property int $idPeca
  * @property string $descricao
@@ -18,7 +18,7 @@ class Pecas extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'Peca';
+        return 'Pecas';
     }
 
     /**
@@ -39,7 +39,7 @@ class Pecas extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idPeca' => 'Id Peca',
+            'idPeca' => 'Id Pecas',
             'descricao' => 'Descricao',
             'custo' => 'Custo',
         ];

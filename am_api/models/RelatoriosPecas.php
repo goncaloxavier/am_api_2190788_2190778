@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "RelatorioPeca".
+ * This is the model class for table "RelatoriosPecas".
  *
  * @property int $idRelatorio
  * @property int $idPeca
@@ -17,7 +17,7 @@ class RelatoriosPecas extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'RelatorioPeca';
+        return 'RelatoriosPecas';
     }
 
     /**
@@ -29,7 +29,7 @@ class RelatoriosPecas extends \yii\db\ActiveRecord
             [['idRelatorio', 'idPeca'], 'required'],
             [['idRelatorio', 'idPeca'], 'integer'],
             [['idRelatorio', 'idPeca'], 'unique', 'targetAttribute' => ['idRelatorio', 'idPeca']],
-            [['idRelatorio'], 'exist', 'skipOnError' => true, 'targetClass' => Relatorios::className(), 'targetAttribute' => ['idRelatorio' => 'idRelatorio']],
+            [['idRelatorio'], 'exist', 'skipOnError' => true, 'targetClass' => Relatorio::className(), 'targetAttribute' => ['idRelatorio' => 'idRelatorio']],
             [['idPeca'], 'exist', 'skipOnError' => true, 'targetClass' => Pecas::className(), 'targetAttribute' => ['idPeca' => 'idPeca']],
         ];
     }
@@ -41,7 +41,7 @@ class RelatoriosPecas extends \yii\db\ActiveRecord
     {
         return [
             'idRelatorio' => 'Id Relatorio',
-            'idPeca' => 'Id Peca',
+            'idPeca' => 'Id Pecas',
         ];
     }
 }

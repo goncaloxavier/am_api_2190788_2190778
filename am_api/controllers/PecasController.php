@@ -3,17 +3,21 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Pecas;
-use app\models\PecasSearch;
+use app\models\Avarias;
+use app\models\AvariasSearch;
 use yii\rest\ActiveController;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PecasController implements the CRUD actions for Pecas model.
+ * AvariasController implements the CRUD actions for Avarias model.
  */
 class PecasController extends ActiveController
 {
-    public $modelClass = "app\models\pecas";
+    public $modelClass = 'app\models\Pecas';
+
+    public function actionTotal(){
+
+    }
 }

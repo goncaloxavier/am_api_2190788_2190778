@@ -16,7 +16,7 @@ use Yii;
  * @property int $idDispositivo
  * @property int|null $idRelatorio
  *
- * @property Dispositivo $idDispositivo0
+ * @property Dispositivos $idDispositivo0
  * @property Relatorio[] $relatorios
  */
 class Avarias extends \yii\db\ActiveRecord
@@ -49,13 +49,13 @@ class Avarias extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idAvaria' => 'Id Avaria',
+            'idAvaria' => 'Id Avarias',
             'descricao' => 'Descricao',
             'tipo' => 'Tipo',
             'estado' => 'Estado',
             'gravidade' => 'Gravidade',
             'data' => 'Data',
-            'idDispositivo' => 'Id Dispositivo',
+            'idDispositivo' => 'Id Dispositivos',
             'idRelatorio' => 'Id Relatorio',
         ];
     }
@@ -67,7 +67,7 @@ class Avarias extends \yii\db\ActiveRecord
      */
     public function getIdDispositivo0()
     {
-        return $this->hasOne(Dispositivo::className(), ['idDispositivo' => 'idDispositivo']);
+        return $this->hasOne(Dispositivos::className(), ['idDispositivo' => 'idDispositivo']);
     }
 
     /**

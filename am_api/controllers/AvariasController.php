@@ -15,5 +15,10 @@ use yii\filters\VerbFilter;
  */
 class AvariasController extends ActiveController
 {
-   public $modelClass = "app\models\avarias";
+    public $modelClass = 'app\models\Avarias';
+
+    public function actionOrdenado(){
+        $modelAvaria = $this->modelClass;
+        $rec = $modelAvaria
+    }
 }
