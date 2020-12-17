@@ -16,6 +16,7 @@ use yii\web\IdentityInterface;
  * @property string $email
  * @property int $estado
  * @property string $idValidacao
+ * @property Avarias[] $avarias
  */
 class Utilizador extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
@@ -145,12 +146,10 @@ class Utilizador extends \yii\db\ActiveRecord implements \yii\web\IdentityInterf
     public function validateAuthKey($idValidacao)
     {
         ///return $this->idValidacao === $idValidacao;
-    }
+    }public function getAvarias()
+{
+    return $this->hasMany(Avaria::className(), ['idUtilizador' => 'idUtilizador']);
+}
 }
 
-    public function getAvarias()
-    {
-        return $this->hasMany(Avaria::className(), ['idUtilizador' => 'idUtilizador']);
-    }
-}
- * @property Avaria[] $avarias
+
