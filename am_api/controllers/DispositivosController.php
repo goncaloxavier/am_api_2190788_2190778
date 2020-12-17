@@ -17,7 +17,7 @@ class DispositivosController extends ActiveController
 {
     public $modelClass = 'app\models\Dispositivos';
 
-    public function actionTotal(){
-
+    public function actionFuncional($estado){
+        
     }
 }

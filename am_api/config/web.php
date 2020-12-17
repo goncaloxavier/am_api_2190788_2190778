@@ -68,13 +68,15 @@ $config = [
                     'pluralize' => 'false',
                     'tokens' => ['{idvalidacao}'=>'<idvalidacao:\\w+>',
                                 '{nomeutilizador}' =>'<nomeutilizador:\\w+ >',
+                        '{user}'=>'<user:\\w+>',
+                        '{referencia}'=>'<referencia:\\w+>',
                                 '{palavrapasse}' => '<palavrapasse:\\w + >'],
                     'extraPatterns' =>
                         [
                         'GET validacao/{idvalidacao}' => 'validacao',
                         'GET autenticacao/{ nomeutilizador}/{palavrapasse}' => 'autenticacao',
-                        ''],
-
+                        'GET findbyuser/{user}' => 'findbyuser',
+                        'GET findbyref/{referencia}' => 'findbyref',
                 ]
             ]
         ],
