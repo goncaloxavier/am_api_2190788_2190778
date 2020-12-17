@@ -19,6 +19,6 @@ class AvariasController extends ActiveController
 
     public function actionOrdenado(){
         $modelAvaria = $this->modelClass;
-        $rec = $modelAvaria
+        $rec = $modelAvaria;
     }
 }

@@ -11,6 +11,11 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'modules' => [
+        'v1' => [
+            'class' => 'app\modules\v1\Autenticacao',
+        ],
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -30,11 +35,18 @@ $config = [
             'errorAction' => 'site/error',
         ],
         'mailer' => [
+
             'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'viewPath' => '@app/mail',
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com', //Se falhar usar ip v4…
+                'username' => 'gonalovenancio@gmail.com',
+                'password' => 'MentalIssues45',
+                'port' => '465', //465 ou 587',
+                'encryption' => 'ssl', //ssl ou tls
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -52,7 +64,17 @@ $config = [
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => 'avarias',
+                    'controller' => ['avarias','utilizadores'],
+                    'pluralize' => 'false',
+                    'tokens' => ['{idvalidacao}'=>'<idvalidacao:\\w+>',
+                                '{nomeutilizador}' =>'<nomeutilizador:\\w+ >',
+                                '{palavrapasse}' => '<palavrapasse:\\w + >'],
+                    'extraPatterns' =>
+                        [
+                        'GET validacao/{idvalidacao}' => 'validacao',
+                        'GET autenticacao/{ nomeutilizador}/{palavrapasse}' => 'autenticacao',
+                        ''],
+
                 ]
             ]
         ],
