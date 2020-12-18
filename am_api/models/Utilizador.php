@@ -146,10 +146,11 @@ class Utilizador extends \yii\db\ActiveRecord implements \yii\web\IdentityInterf
     public function validateAuthKey($idValidacao)
     {
         ///return $this->idValidacao === $idValidacao;
-    }public function getAvarias()
-{
-    return $this->hasMany(Avaria::className(), ['idUtilizador' => 'idUtilizador']);
-}
+    }
+
+    public function getAvarias(){
+        return $this->hasMany(Avaria::className(), ['idUtilizador' => 'idUtilizador']);
+    }
 }
 
 

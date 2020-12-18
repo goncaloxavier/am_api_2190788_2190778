@@ -26,7 +26,7 @@ class AvariasController extends ActiveController
         return $rec;
     }
 
-    public function actionFindbyuser($user){
+    public function actionByuser($user){
         $user = Utilizador::find()->where(["nomeUtilizador" => $user])->one();
         $modelAvaria = $this->modelClass;
         $recAvaria = $modelAvaria::find()->where(["idUtilizador" => $user->idUtilizador])->asArray()->all();
@@ -34,7 +34,7 @@ class AvariasController extends ActiveController
         return $recAvaria;
     }
 
-    public function actionFindbyref($referencia){
+    public function actionByref($referencia){
         $dispositivo = Dispositivos::find()->where(["referencia" => $referencia])->one();
         $modelAvaria = $this->modelClass;
         $recAvaria = $modelAvaria::find()->where(["avaria.idDispositivo" => $dispositivo->idDispositivo])->asArray()->all();

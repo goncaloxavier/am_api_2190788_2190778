@@ -64,24 +64,29 @@ $config = [
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['avarias','utilizadores'],
+                    'controller' => ['avarias','utilizadores','dispositivos'],
                     'pluralize' => 'false',
-                    'tokens' => ['{idvalidacao}'=>'<idvalidacao:\\w+>',
-                                '{nomeutilizador}' =>'<nomeutilizador:\\w+ >',
+                    'tokens' => [
+                        '{idvalidacao}'=>'<idvalidacao:\\w+>',
+                        '{nomeutilizador}' =>'<nomeutilizador:\\w+ >',
                         '{user}'=>'<user:\\w+>',
                         '{referencia}'=>'<referencia:\\w+>',
-                                '{palavrapasse}' => '<palavrapasse:\\w + >'],
+                        '{estado}'=>'<estado:\\w+>',
+                        '{palavrapasse}' => '<palavrapasse:\\w + >',
+                    ],
                     'extraPatterns' =>
-                        [
+                    [
                         'GET validacao/{idvalidacao}' => 'validacao',
                         'GET autenticacao/{ nomeutilizador}/{palavrapasse}' => 'autenticacao',
-                        'GET findbyuser/{user}' => 'findbyuser',
-                        'GET findbyref/{referencia}' => 'findbyref',
+                        'GET byuser/{user}' => 'byuser',
+                        'GET byref/{referencia}' => 'byref',
+                        'GET byestado/{estado}' => 'byestado',
+                        'GET byavaria/{referencia}' => 'byavaria',
+                    ]
                 ]
-            ]
+            ],
         ],
-    ],
-    'params' => $params,
+    ]
 ];
 
 if (YII_ENV_DEV) {

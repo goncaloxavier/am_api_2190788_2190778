@@ -7,7 +7,6 @@ use yii\rest\ActiveController;
 use yii\web\Controller;
 use yii\filters\auth\HttpBasicAuth;
 
-
 /**
  * Default controller for the `v1` module
  */
