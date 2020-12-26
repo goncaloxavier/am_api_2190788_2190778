@@ -18,7 +18,7 @@ class Pecas extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'Pecas';
+        return 'Peca';
     }
 
     /**

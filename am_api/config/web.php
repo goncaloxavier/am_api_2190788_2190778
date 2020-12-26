@@ -64,24 +64,28 @@ $config = [
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['avarias','utilizadores','dispositivos'],
-                    'pluralize' => 'false',
+                    'controller' => ['avarias','utilizadores','dispositivos', 'relatorios'],
+                    'pluralize' => false,
                     'tokens' => [
                         '{idvalidacao}'=>'<idvalidacao:\\w+>',
-                        '{nomeutilizador}' =>'<nomeutilizador:\\w+ >',
+                        '{nomeutilizador}' =>'<nomeutilizador:\\w+>',
                         '{user}'=>'<user:\\w+>',
                         '{referencia}'=>'<referencia:\\w+>',
                         '{estado}'=>'<estado:\\w+>',
-                        '{palavrapasse}' => '<palavrapasse:\\w + >',
+                        '{palavrapasse}' => '<palavrapasse:\\w+>',
+                        '{mes}'=>'<mes:\\w+>',
+                        '{gravidade}'=>'<gravidade:\\w+>',
+                        '{id}'=>'<id:\\w+>',
                     ],
                     'extraPatterns' =>
                     [
                         'GET validacao/{idvalidacao}' => 'validacao',
-                        'GET autenticacao/{ nomeutilizador}/{palavrapasse}' => 'autenticacao',
+                        'GET autenticacao/{nomeutilizador}/{palavrapasse}' => 'autenticacao',
                         'GET byuser/{user}' => 'byuser',
                         'GET byref/{referencia}' => 'byref',
                         'GET byestado/{estado}' => 'byestado',
-                        'GET byavaria/{referencia}' => 'byavaria',
+                        'GET bygravidade/{referencia}/{gravidade}' => 'bygravidade',
+                        'GET estatistica/{mes}' => 'estatistica',
                     ]
                 ]
             ],

@@ -5,14 +5,15 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "Relatorio".
+ * This is the model class for table "Relatorios".
  *
  * @property int $idRelatorio
  * @property int $idAvaria
  * @property int $idDispositivo
+ * @property int $idUtilizador
  * @property string|null $descricao
  */
-class Relatorio extends \yii\db\ActiveRecord
+class Relatorios extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -28,8 +29,8 @@ class Relatorio extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idAvaria', 'idDispositivo'], 'required'],
-            [['idAvaria', 'idDispositivo'], 'integer'],
+            [['idAvaria', 'idDispositivo', 'idUtilizador'], 'required'],
+            [['idAvaria', 'idDispositivo', 'idUtilizador'], 'integer'],
             [['descricao'], 'string', 'max' => 200],
             [['idAvaria'], 'exist', 'skipOnError' => true, 'targetClass' => Avarias::className(), 'targetAttribute' => ['idAvaria' => 'idAvaria']],
         ];
@@ -41,9 +42,10 @@ class Relatorio extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idRelatorio' => 'Id Relatorio',
+            'idRelatorio' => 'Id Relatorios',
             'idAvaria' => 'Id Avarias',
             'idDispositivo' => 'Id Dispositivos',
+            'idUtilizador' => 'Id Utilizadores',
             'descricao' => 'Descricao',
         ];
     }

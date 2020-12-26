@@ -10,11 +10,11 @@ use yii\web\IdentityInterface;
  * This is the model class for table "Utilizador".
  *
  * @property int $idUtilizador
- * @property string $nome
  * @property string $nomeUtilizador
  * @property string $palavraPasse
  * @property string $email
  * @property int $estado
+ * @property int $tipo
  * @property string $idValidacao
  * @property Avarias[] $avarias
  */
@@ -34,9 +34,8 @@ class Utilizador extends \yii\db\ActiveRecord implements \yii\web\IdentityInterf
     public function rules()
     {
         return [
-            [['nome', 'nomeUtilizador', 'palavraPasse', 'email'], 'required'],
+            [['nomeUtilizador', 'palavraPasse', 'email', 'tipo'], 'required'],
             [['estado'], 'integer'],
-            [['nome'], 'string', 'max' => 100],
             [['nomeUtilizador'], 'string', 'max' => 20],
             [['palavraPasse'], 'string', 'max' => 18],
             [['email'], 'string', 'max' => 50],
@@ -51,11 +50,11 @@ class Utilizador extends \yii\db\ActiveRecord implements \yii\web\IdentityInterf
     {
         return [
             'idUtilizador' => 'Id Utilizador',
-            'nome' => 'Nome',
             'nomeUtilizador' => 'Nome Utilizador',
             'palavraPasse' => 'Palavra Passe',
             'email' => 'Email',
             'estado' => 'Estado',
+            'tipo' => 'Tipo',
             'idValidacao' => 'Id Validacao',
         ];
     }

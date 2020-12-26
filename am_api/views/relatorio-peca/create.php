@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\RelatoriosPecas */
 
-$this->title = 'Create Relatorio Pecas';
-$this->params['breadcrumbs'][] = ['label' => 'Relatorio Pecas', 'url' => ['index']];
+$this->title = 'Create Relatorios Pecas';
+$this->params['breadcrumbs'][] = ['label' => 'Relatorios Pecas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="relatorio-peca-create">

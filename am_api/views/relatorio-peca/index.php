@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\RelatoriosPecasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Relatorio Pecas';
+$this->title = 'Relatorios Pecas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="relatorio-peca-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Relatorio Pecas', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Relatorios Pecas', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

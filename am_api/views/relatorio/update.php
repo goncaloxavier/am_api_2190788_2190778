@@ -3,9 +3,9 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Relatorio */
+/* @var $model app\models\Relatorios */
 
-$this->title = 'Update Relatorio: ' . $model->idRelatorio;
+$this->title = 'Update Relatorios: ' . $model->idRelatorio;
 $this->params['breadcrumbs'][] = ['label' => 'Relatorios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->idRelatorio, 'url' => ['view', 'id' => $model->idRelatorio]];
 $this->params['breadcrumbs'][] = 'Update';

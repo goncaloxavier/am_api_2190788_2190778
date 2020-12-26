@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Relatorio;
+use app\models\Relatorios;
 
 /**
- * RelatorioSearch represents the model behind the search form of `app\models\Relatorio`.
+ * RelatoriosSearch represents the model behind the search form of `app\models\Relatorios`.
  */
-class RelatorioSearch extends Relatorio
+class RelatoriosSearch extends Relatorios
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class RelatorioSearch extends Relatorio
      */
     public function search($params)
     {
-        $query = Relatorio::find();
+        $query = Relatorios::find();
 
         // add conditions that should always apply here
 
