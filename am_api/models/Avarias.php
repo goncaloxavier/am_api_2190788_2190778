@@ -106,16 +106,18 @@ class Avarias extends \yii\db\ActiveRecord
 
     public function afterSave($insert, $changedAttributes)
     {
-        parent::afterSave($insert, $changedAttributes);
-
         $query = "SELECT * FROM AVARIA WHERE idAvaria != ".$this->idAvaria." and idDispositivo = ".$this->idDispositivo." and (estado = 1 or estado = 2) and gravidade = 0";
 
-        if(($this->estado == 1 || $this->estado == 2) && $this->gravidade == 0){
-            if(!Avarias::findBySql($query)->all()){
-                $this->idDispositivo0->estado = 0;
-            }
-        }elseif(($this->estado == 3 && ($this->gravidade == 0 || $this->gravidade == 1) && !Avarias::findBySql($query)->all())){
+        if($this->gravidade == 1 && !Avaria::findBySql($query)->all()){
             $this->idDispositivo0->estado = 1;
+        }else{
+            if(($this->estado == 1 || $this->estado == 2) && $this->gravidade == 0){
+                if(!Avarias::findBySql($query)->all()){
+                    $this->idDispositivo0->estado = 0;
+                }
+            }elseif(($this->estado == 3 && ($this->gravidade == 0 || $this->gravidade == 1) && !Avarias::findBySql($query)->all())){
+                $this->idDispositivo0->estado = 1;
+            }
         }
 
         $this->idDispositivo0->save();
