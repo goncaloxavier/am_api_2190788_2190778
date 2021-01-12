@@ -5,7 +5,7 @@ namespace app\controllers;
 use app\models\Dispositivos;
 use app\models\Utilizador;
 use Yii;
-use app\models\Avarias;
+use app\models\Avaria;
 use app\models\AvariasSearch;
 use yii\base\ErrorException;
 use yii\filters\auth\HttpBasicAuth;
@@ -57,7 +57,7 @@ class AvariasController extends ActiveController
         return $recAvaria;
     }
 
-    public function behaviors()
+    /*public function behaviors()
     {
        $behaviors = parent::behaviors();
             $behaviors['authenticator'] = [
@@ -69,11 +69,11 @@ class AvariasController extends ActiveController
 
    public function auth($username, $password)
    {
-       $user = Utilizador::findByUsername($username);
-          if ($user && $user->validatePassword($password))
-            {
-                return $user;
-           }
+    $user = Utilizador::findByUsername($username);
+      if ($user && $user->validatePassword($password))
+        {
+            return $user;
+       }
    }
 
     public function checkAccess($action, $model = null, $params = [])
@@ -81,5 +81,5 @@ class AvariasController extends ActiveController
         if(Yii::$app->user->isGuest){
             throw new \yii\web\ForbiddenHttpException('Utilizador tem de estar autenticado');
         }
-    }
+    }*/
 }

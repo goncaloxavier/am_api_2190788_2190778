@@ -66,7 +66,7 @@ class DispositivosController extends ActiveController
         return $modelAvaria;
     }
 
-    public function behaviors()
+    /*public function behaviors()
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
@@ -90,5 +90,5 @@ class DispositivosController extends ActiveController
         if(Yii::$app->user->identity->tipo != 0 && Yii::$app->user->identity->tipo != 2){
             throw new \yii\web\ForbiddenHttpException('Não tem permissões para este requisito');
         }
-    }
+    }*/
 }
