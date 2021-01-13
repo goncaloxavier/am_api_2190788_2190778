@@ -80,7 +80,7 @@ $config = [
                     'extraPatterns' =>
                     [
                         'GET validacao/{idvalidacao}' => 'validacao',
-                        'GET autenticacao/{nomeutilizador}/{palavrapasse}' => 'autenticacao',
+                        'GET auth/{nomeutilizador}/{palavrapasse}' => 'auth',
                         'GET byuser/{user}' => 'byuser',
                         'GET byref/{referencia}' => 'byref',
                         'GET byestado/{estado}' => 'byestado',

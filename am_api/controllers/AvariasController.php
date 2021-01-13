@@ -57,7 +57,7 @@ class AvariasController extends ActiveController
         return $recAvaria;
     }
 
-    /*public function behaviors()
+    public function behaviors()
     {
        $behaviors = parent::behaviors();
             $behaviors['authenticator'] = [
@@ -76,10 +76,11 @@ class AvariasController extends ActiveController
        }
    }
 
+
     public function checkAccess($action, $model = null, $params = [])
     {
         if(Yii::$app->user->isGuest){
             throw new \yii\web\ForbiddenHttpException('Utilizador tem de estar autenticado');
         }
-    }*/
+    }
 }

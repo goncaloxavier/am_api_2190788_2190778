@@ -35,7 +35,16 @@ class UtilizadoresController extends ActiveController
         }
     }
 
-    public function behaviors()
+    public function actionAuth($nomeutilizador, $palavrapasse){
+        $utilizador = Utilizador::find()->where(['nomeUtilizador' => $nomeutilizador, 'palavraPasse' => $palavrapasse])->one();
+        if(is_null($utilizador)){
+            return null;
+        }else{
+            return $utilizador;
+        }
+    }
+
+    /*public function behaviors()
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
@@ -59,5 +68,5 @@ class UtilizadoresController extends ActiveController
         if(Yii::$app->user->identity->tipo != 0){
             throw new \yii\web\ForbiddenHttpException('Não tem permissões para este requisito');
         }
-    }
+    }*/
 }

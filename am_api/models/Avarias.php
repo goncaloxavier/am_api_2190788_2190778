@@ -36,7 +36,7 @@ class Avarias extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['descricao', 'tipo', 'gravidade', 'idDispositivo', 'idUtilizador', 'idAvaria', 'data'], 'required'],
+            [['descricao', 'tipo', 'gravidade', 'idDispositivo', 'idUtilizador', 'data'], 'required'],
             [['tipo', 'estado', 'gravidade', 'idDispositivo', 'idRelatorio', 'idUtilizador'], 'integer'],
             [['data'], 'safe'],
             [['descricao'], 'string', 'max' => 200],
