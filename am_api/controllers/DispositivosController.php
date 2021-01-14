@@ -56,7 +56,7 @@ class DispositivosController extends ActiveController
                 $modelDispositivo = $this->modelClass;
                 $rec = $modelDispositivo::find()->where(["referencia" => $referencia])->one();
                 $modelAvaria = Avarias::findBySql("SELECT * FROM avaria 
-                                                WHERE idDispositivo = ".$rec->idDispositivo." 
+                                                WHERE idDispositivo = ".$rec->idDispositivo."
                                                 and estado != 3 and gravidade =  ".$gravidade)->asArray()->all();
             }catch (ErrorException $e){
                 throw new \yii\web\HttpException(404, "Dispositivo solicitado não existe");

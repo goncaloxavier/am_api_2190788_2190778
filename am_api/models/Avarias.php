@@ -83,17 +83,22 @@ class Avarias extends \yii\db\ActiveRecord
 
     public function beforeDelete()
     {
-        $query = "SELECT * FROM AVARIA 
-                WHERE idAvaria != ".$this->idAvaria." 
-                and idDispositivo = ".$this->idDispositivo." 
-                and (estado = 1 or estado = 2) 
-                and gravidade = 0";
+        $query = "SELECT * FROM AVARIA WHERE idAvaria != ".$this->idAvaria." and idDispositivo = ".$this->idDispositivo." and (estado = 0 or estado = 1) and gravidade = 0";
 
-        if(($this->estado != 3 && ($this->gravidade == 0 || $this->gravidade == 1)) && !Avarias::findBySql($query)->all()){
+        if($this->idRelatorio != null){
+            $modelRelatorio = Relatorios::findOne($this->idRelatorio);
+            $modelRelatorio->delete();
+        }
+
+        if($this->estado != 2 && (!Avarias::findBySql($query)->all() && ($this->gravidade == 0 || $this->gravidade == 1))){
             $this->idDispositivo0->estado = 1;
         }else{
             $this->idDispositivo0->estado = 0;
         }
+
+        $query = Avarias::find()
+            ->where('(estado = 2 or (gravidade = 1 and (estado = 0 or estado = 1)))')
+            ->count('DISTINCT(idDispositivo)');
 
         $this->idDispositivo0->save();
 
@@ -110,23 +115,20 @@ class Avarias extends \yii\db\ActiveRecord
 
     public function afterSave($insert, $changedAttributes)
     {
-        $query = "SELECT * FROM AVARIA 
-                WHERE idAvaria != ".$this->idAvaria." 
-                and idDispositivo = ".$this->idDispositivo." 
-                and (estado = 1 or estado = 2) 
-                and gravidade = 0";
+        $query = "SELECT * FROM AVARIA WHERE idAvaria != ".$this->idAvaria." and idDispositivo = ".$this->idDispositivo." and (estado = 0 or estado = 1) and gravidade = 0";
 
         if($this->gravidade == 1 && !Avarias::findBySql($query)->all()){
             $this->idDispositivo0->estado = 1;
         }else{
-            if(($this->estado == 1 || $this->estado == 2) && $this->gravidade == 0){
+            if(($this->estado == 0 || $this->estado == 1) && $this->gravidade == 0){
                 if(!Avarias::findBySql($query)->all()){
                     $this->idDispositivo0->estado = 0;
                 }
-            }elseif(($this->estado == 3 && ($this->gravidade == 0 || $this->gravidade == 1) && !Avarias::findBySql($query)->all())){
+            }elseif($this->estado == 2 && (!Avarias::findBySql($query)->all() && ($this->gravidade == 0 || $this->gravidade == 1))){
                 $this->idDispositivo0->estado = 1;
             }
         }
+
 
         $this->idDispositivo0->save();
 
