@@ -24,8 +24,8 @@ class RelatoriosController extends ActiveController
         if($mes == "anual"){
             $avariasTotal = Avarias::find()->all();
             $dispositivosTotal = Dispositivos::find()->all();
-            $avariasNR = Avarias::find()->where(["estado" => 1])->count();
-            $avariasR = Avarias::find()->where(["estado" => 3])->count();
+            $avariasNR = Avarias::find()->where(["estado" => 0])->count();
+            $avariasR = Avarias::find()->where(["estado" => 2])->count();
             $dispositivosNF = Dispositivos::find()->where(["estado" => 0])->count();
             $dispositivosF = Dispositivos::find()->where(["estado" => 1])->count();
         }
@@ -47,7 +47,6 @@ class RelatoriosController extends ActiveController
 
         return [
             "avariasTotal" => count($avariasTotal),
-            "dispositivosTotal" => count($dispositivosTotal),
             "avariasNR" => $avariasNR,
             "avariasR" =>$avariasR,
             "dispositivosNF" => $dispositivosNF,
